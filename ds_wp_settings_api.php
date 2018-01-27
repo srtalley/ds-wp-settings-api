@@ -1,7 +1,12 @@
 <?php
+//GitHub: https://github.com/srtalley/dustysun-wp-settings-api
 //Version 1.0
-//Libraries
-// https://github.com/farbelous/fontawesome-iconpicker
+//Author: Steve Talley
+//Organization: Dusty Sun
+//Author URL: https://dustysun.com/
+
+//Libraries Included 
+//https://github.com/farbelous/fontawesome-iconpicker
 
 //Include the admin panel page
 //https://github.com/kmhcreative/icon-picker
