@@ -43,6 +43,42 @@ For example you could do this in your plugin:
 ```
 $ds_example_current_settings = $ds_example_settings_obj->current_settings();
 ```
+### Instantiation
+
+Example:
+```
+$my_api_settings = array(
+  'json_file' => plugin_dir_path( __FILE__ ) . '/plugin-options.json',
+  'register_settings' => true
+);
+
+$my_settings_page = new My_DustySun_WP_Settings_API($my_api_settings);
+```
+
+
 ### Available Functions
 
+#### get_reset_ajax_form
+Call this function in a PHP file to output an AJAX form that can be used to remove all settings from the db for the plugin.
+#### read_json_file
+
+Pass a file name while building the class or put a file with the .json extension in the same directory as the settings api php file. It must have the same name as the PHP file but with the .json extension.
+
+--
 Additional documentation coming soon. Please reach out if you're attempting to use this work in progress!
+
+
+### Changelog
+#### 1.0.4 - 2018-02-11
+* Added function to create an Ajax form that allows a reset/deletion of all options in the database.
+
+#### 1.0.3 - 2018-02-07
+* Tab pages did not have a correct URL. Added a page_slug option to the JSON file which will fill in the URL to the tabs correctly.
+* Fixed a bug where the first save of a new option array would not save because the hidden option key name was not being set in the validate function. (Actually the validate function is running twice in WP for some reason with this first save, stripping the hidden value.) Worked around this issue by making sure that value is set and if not, it pulls it from the POST data which should have it.
+
+#### 1.0.2 - 2018-02-03
+* Changed method of instantiation - now must pass an array containing 'json_file' with a path to the json file and 'register_settings' set to true or false. If any of these items are not passed the plugin will not register settings and will look for a JSON file in the same directory as the php file to load.
+
+#### 1.0.1 - 2018-01-27
+* Fixed an issue with the settings library to allow having hidden options.
+* Fixed issue with the current settings function being called too many times.
